@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Esp-32 充足飲水智慧杯墊</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script type="module">import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-database.js"; import { initializeApp } from "https://www.gstatic.com/firebasejs/9.6.1/firebase-app.js"; const firebaseConfig = { apiKey: "AIzaSyBheQiegwSHSxObaMvDSRc7nMpG2rQKQfY",
+        authDomain: "esp32-term.firebaseapp.com", databaseURL: "https://esp32-term-default-rtdb.asia-southeast1.firebasedatabase.app", projectId: "esp32-term", storageBucket: "esp32-term.appspot.com", messagingSenderId: "459781635323", appId: "1:459781635323:web:fcb697e551b3543a23c45e",
+        measurementId: "G-Z1VWQH96HL" };const app = initializeApp(firebaseConfig);</script>
+    <script>
+        $(function() {
+            $("#reset-btn").click(function() {
+                const db = getDatabase();
+                set(ref(db, 'users/' + 111), {
+                    water: 50
+                });
+            });
+            $("#number").html = 50;
+        });
+    </script>
+</head>
+
+<body style="margin: 0; height: 100vh; display: flex; justify-content: center; align-items: center; flex-direction: column;">
+    <div>
+        <span>你喝了：</span>
+        <span id="number">0</span>
+        <span>ml</span>
+    </div>
+    <button id="reset-btn">
+        歸零
+    </button>
+
+
+</body>
+
+</html>
